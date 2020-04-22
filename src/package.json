@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-lambda-date-app",
+  "version": "1.0.0",
+  "description": "POC codedeploy nodejs-lambda-date-app",
+  "main": "myDateTimeFunction.js",
+  "author": "Gopi",
+  "dependencies": {},
+  "scripts": {
+    "test": "mocha tests/unit/",
+    "test-integration": "mocha tests/integration/",
+    "get-client-secret": ""
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.2.0",
+    "mocha": "^7.0.1"
+  }
+}
