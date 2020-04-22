@@ -4,10 +4,10 @@ phases:
    build:
     commands:
       - echo Build started on `date`
-      - $(sam build -t ./infra/template.yaml)
-      - $(sam package --output-template packaged.yaml --s3-bucket aeng-poc --s3-prefix codedeploy-nodejs-lambda-date-app)
+      - sh "sam build -t ./infra/template.yaml"
+      - sh "sam package --output-template packaged.yaml --s3-bucket aeng-poc --s3-prefix codedeploy-nodejs-lambda-date-app"
   post_build:
     commands:
       - bash -c "if [ /"$CODEBUILD_BUILD_SUCCEEDING/" == /"0/" ]; then exit 1; fi"
-      - $(sam deploy --template-file packaged.yaml --region us-east-1 --capabilities CAPABILITY_IAM --stack-name codedeploy-nodejs-lambda-date-app-stack)
+      - sh "sam deploy --template-file packaged.yaml --region us-east-1 --capabilities CAPABILITY_IAM --stack-name codedeploy-nodejs-lambda-date-app-stack"
       - echo Deployment successfully completed on `date`
