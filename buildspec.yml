@@ -7,9 +7,8 @@ phases:
     commands:
       - npm install time
       - export BUCKET=aeng-poc
-      - aws cloudformation package --template-file ./infra/template.yaml1 --s3-bucket $BUCKET --s3-prefix codedeploy-nodejs-lambda-date-app --output-template-file outputtemplate.yml
+      - aws cloudformation package --template-file ./infra/template.yaml --s3-bucket $BUCKET --s3-prefix codedeploy-nodejs-lambda-date-app --output-template-file outputtemplate.yml
 artifacts:
   type: zip
   files:
-    - ./infra/template.yaml
     - outputtemplate.yml
