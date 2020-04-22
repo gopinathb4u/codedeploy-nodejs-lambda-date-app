@@ -11,5 +11,5 @@ phases:
 artifacts:
   type: zip
   files:
-    - template.yaml
+    - ./infra/template.yaml
     - outputtemplate.yml
