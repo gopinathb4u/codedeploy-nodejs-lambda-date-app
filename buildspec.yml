@@ -9,5 +9,5 @@ phases:
   post_build:
     commands:
       - bash -c "if [ /"$CODEBUILD_BUILD_SUCCEEDING/" == /"0/" ]; then exit 1; fi"
-      - echo Build stage successfully completed on `date`
       - sam deploy --template-file packaged.yaml --region us-east-1 --capabilities CAPABILITY_IAM --stack-name codedeploy-nodejs-lambda-date-app-stack
+      - echo Deployment successfully completed on `date`
