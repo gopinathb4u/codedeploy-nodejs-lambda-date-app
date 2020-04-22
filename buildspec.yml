@@ -1,13 +1,15 @@
 version: 0.2
-
 phases:
-   build:
+  install:
+    runtime-versions:
+      nodejs: 10
+  build:
     commands:
-      - echo Build started on `date`
-      - sh "sam build -t ./infra/template.yaml"
-      - sh "sam package --output-template packaged.yaml --s3-bucket aeng-poc --s3-prefix codedeploy-nodejs-lambda-date-app"
-  post_build:
-    commands:
-      - bash -c "if [ /"$CODEBUILD_BUILD_SUCCEEDING/" == /"0/" ]; then exit 1; fi"
-      - sh "sam deploy --template-file packaged.yaml --region us-east-1 --capabilities CAPABILITY_IAM --stack-name codedeploy-nodejs-lambda-date-app-stack"
-      - echo Deployment successfully completed on `date`
+      - npm install time
+      - export BUCKET=aeng-poc
+      - aws cloudformation package --template-file ./infra/template.yaml --s3-bucket $BUCKET --s3-prefix codedeploy-nodejs-lambda-date-app --output-template-file outputtemplate.yml
+artifacts:
+  type: zip
+  files:
+    - template.yml
+    - outputtemplate.yml
