@@ -10,3 +10,4 @@ Resources:
       CodeUri: ../src
       Handler: myDateTimeFunction.handler
       Runtime: nodejs10.x
+      Role: "arn:aws:iam::530694037299:role/lambda-poc-role"
