@@ -23,7 +23,7 @@
     	// a statusCode of 400 indicating it failed.
     	var lambdaParams = {
     		FunctionName: functionToTest,    
-    		Payload: "{\"option\": \"date1\", \"period\": \"today\"}",
+    		Payload: "{\"option\": \"date\", \"period\": \"today\"}",
     		InvocationType: "RequestResponse"
     	};
     
